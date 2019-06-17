@@ -14,7 +14,6 @@ resource "aws_iam_role" "dd_role" {
   }
 }
 
-# https://docs.datadoghq.com/integrations/amazon_lambda/
 resource "aws_iam_role_policy" "dd_lambda" {
   name   = "alexf_lambda"
   role   = "${aws_iam_role.dd_role.id}"
