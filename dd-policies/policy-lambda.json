@@ -1,0 +1,17 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Action": [
+                "ec2:Describe*",
+                "lambda:List*",
+                "logs:DescribeLogGroups",
+                "logs:DescribeLogStreams",
+                "logs:FilterLogEvents",
+                "tag:GetResources"
+            ],
+            "Effect": "Allow",
+            "Resource": "*"
+        }
+    ]
+}
