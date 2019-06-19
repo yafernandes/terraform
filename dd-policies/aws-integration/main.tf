@@ -7,7 +7,7 @@ provider "aws" {
 resource "aws_iam_role" "dd_aws" {
   name = "alexf_aws"
 
-  assume_role_policy = "${file("secret-datadog.json")}"
+  assume_role_policy = "${templatefile("trust-datadog.json", {dd_api_key = "${var.dd_api_key}"} ) }"
 
   tags = {
     Creator = "alex.fernandes"
