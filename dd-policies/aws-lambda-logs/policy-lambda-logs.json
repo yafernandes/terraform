@@ -1,0 +1,28 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Action": [
+                "cloudfront:GetDistributionConfig",
+                "cloudfront:ListDistributions",
+                "elasticloadbalancing:DescribeLoadBalancers",
+                "elasticloadbalancing:DescribeLoadBalancerAttributes",
+                "lambda:AddPermission",
+                "lambda:GetPolicy",
+                "lambda:RemovePermission",
+                "redshift:DescribeClusters",
+                "redshift:DescribeLoggingStatus",
+                "s3:GetBucketLogging",
+                "s3:GetBucketLocation",
+                "s3:GetBucketNotification",
+                "s3:ListAllMyBuckets",
+                "s3:PutBucketNotification",
+                "logs:PutSubscriptionFilter",
+                "logs:DeleteSubscriptionFilter",
+                "logs:DescribeSubscriptionFilters"
+            ],
+            "Effect": "Allow",
+            "Resource": "*"
+        }
+    ]
+}

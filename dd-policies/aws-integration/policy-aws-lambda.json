@@ -3,7 +3,6 @@
     "Statement": [
         {
             "Action": [
-                "ec2:Describe*",
                 "lambda:List*",
                 "logs:DescribeLogGroups",
                 "logs:DescribeLogStreams",
