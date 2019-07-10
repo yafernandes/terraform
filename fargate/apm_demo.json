@@ -1,0 +1,67 @@
+[
+    {
+        "name": "apm-demo",
+        "image": "yaalexf/apm-demo",
+        "essential": true,
+        "environment": [
+            {
+                "name": "DD_SERVICE_NAME",
+                "value": "fargate"
+            },
+            {
+                "name": "DD_TRACE_ANALYTICS_ENABLED",
+                "value": "true"
+            },
+            {
+                "name": "DD_LOGS_INJECTION",
+                "value": "true"
+            },
+            {
+                "name": "DD_TRACE_GLOBAL_TAGS",
+                "value": "infra:fargate,env:aws"
+            }
+        ],
+        "portMappings": [
+            {
+                "containerPort": 8080,
+                "hostPort": 8080,
+                "protocol": "tcp"
+            }
+        ],
+        "logConfiguration": {
+            "logDriver": "awslogs",
+            "options": {
+                "awslogs-group": "/ecs/fargate-task-definition/${name}",
+                "awslogs-region": "${region}",
+                "awslogs-stream-prefix": "ecs"
+            }
+        }
+    },
+    {
+        "name": "datadog-agent",
+        "image": "datadog/agent",
+        "essential": true,
+        "environment": [
+            {
+                "name": "DD_APM_ENV",
+                "value": "aws"
+            },
+            {
+                "name": "DD_API_KEY",
+                "value": "${dd_api_key}"
+            },
+            {
+                "name": "ECS_FARGATE",
+                "value": "true"
+            },
+            {
+                "name": "DD_APM_ENABLED",
+                "value": "true"
+            },
+            {
+                "name": "DD_LOGS_ENABLED",
+                "value": "true"
+            }
+        ]
+    }
+]
