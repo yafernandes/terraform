@@ -23,3 +23,9 @@ resource "aws_iam_role_policy_attachment" "dd_lambda" {
   role       = "${aws_iam_role.dd_lambda.name}"
   policy_arn = "${aws_iam_policy.dd_lambda.arn}"
 }
+
+# https://docs.aws.amazon.com/lambda/latest/dg/enabling-x-ray.html
+resource "aws_iam_role_policy_attachment" "AWSXrayWriteOnlyAccess" {
+  role       = "${aws_iam_role.dd_lambda.name}"
+  policy_arn = "arn:aws:iam::aws:policy/AWSXrayWriteOnlyAccess"
+}
