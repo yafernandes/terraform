@@ -25,7 +25,7 @@ resource "aws_iam_role_policy_attachment" "LogStreaming" {
   policy_arn = aws_iam_policy.LogStreaming.arn
 }
 
-resource "aws_lambda_event_source_mapping" "example" {
+resource "aws_lambda_event_source_mapping" "DDLogs" {
   event_source_arn  = "${aws_kinesis_stream.LogStreaming.arn}"
   function_name     = "${aws_lambda_function.DDLogs.arn}"
   starting_position = "LATEST"

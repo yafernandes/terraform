@@ -13,7 +13,8 @@ data "aws_arn" "dd_log_forwarder" {
 }
 
 data "aws_iam_role" "dd_log_forwarder" {
-  name = "${split("/", data.aws_arn.dd_log_forwarder.resource)[1]}"
+  # name = "${split("/", data.aws_arn.dd_log_forwarder.resource)[1]}"
+  name = "${replace(data.aws_arn.dd_log_forwarder.resource, "/.*\\//", "")}"
 }
 
 resource "aws_iam_policy" "dd_log_forwarder" {
